@@ -1,0 +1,63 @@
+[System]
+Name='lab4_task1_rules'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=11
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temperature'
+Range=[0 100]
+NumMFs=4
+MF1='Cold':'trimf',[0 0 25]
+MF2='Cool':'trimf',[20 40 60]
+MF3='Warm':'trimf',[50 60 70]
+MF4='Hot':'trimf',[60 100 100]
+
+[Input2]
+Name='Flow'
+Range=[0 100]
+NumMFs=2
+MF1='Slow':'trimf',[0 0 50]
+MF2='Fast':'trimf',[50 100 200]
+
+[Output1]
+Name='HotWaterValve'
+Range=[-90 90]
+NumMFs=6
+MF1='LargeLeft':'trimf',[-126 -90 -54]
+MF2='LowLeft':'trimf',[-89.5556962025316 -53.5556962025317 -17.5556962025317]
+MF3='MidLeft':'trimf',[-54 -18 18]
+MF4='MidRight':'trimf',[-18 18 54]
+MF5='LowRight':'trimf',[18 54 90]
+MF6='LargeRight':'trimf',[54 90 126]
+
+[Output2]
+Name='ColdWater'
+Range=[-90 90]
+NumMFs=6
+MF1='LargeLeft':'trimf',[-126 -90 -54]
+MF2='LowLeft':'trimf',[-90 -54 -18]
+MF3='MidLeft':'trimf',[-54 -18 18]
+MF4='MidRight':'trimf',[-18 18 54]
+MF5='LowRight':'trimf',[18 54 90]
+MF6='LargeRight':'trimf',[54 90 126]
+
+[Rules]
+4 2, 3 4 (1) : 1
+4 1, 1 4 (1) : 1
+3 1, 2 1 (1) : 1
+3 1, 5 5 (1) : 1
+2 1, 1 1 (1) : 1
+1 2, 4 3 (1) : 1
+1 1, 4 2 (1) : 1
+1 1, 6 1 (1) : 1
+1 2, 3 4 (1) : 1
+3 2, 2 2 (1) : 1
+3 1, 5 5 (1) : 1

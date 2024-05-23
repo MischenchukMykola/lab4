@@ -1,0 +1,58 @@
+[System]
+Name='lab4_task2_rules'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temperature'
+Range=[0 100]
+NumMFs=5
+MF1='Very_Cold':'trimf',[-25 0 19.7089947089947]
+MF2='Cold':'trimf',[0 21.8253968253968 38.8]
+MF3='Normal':'trimf',[24.7354497354497 49.7354497354497 74.7354497354497]
+MF4='Warm':'trimf',[60.7 80.2910052910053 100]
+MF5='Very_Warm':'trimf',[80.5555555555555 100 125]
+
+[Input2]
+Name='RateOfChange'
+Range=[0 10]
+NumMFs=3
+MF1='Negative':'trimf',[-5 0 5]
+MF2='Normal':'trimf',[3 5 7]
+MF3='Positive':'trimf',[5 10 15]
+
+[Output1]
+Name='ACControl'
+Range=[0 1]
+NumMFs=6
+MF1='LargeLeft':'trimf',[-0.2 3.469e-18 0.2]
+MF2='LowLeft':'trimf',[0 0.2 0.4]
+MF3='MidLeft':'trimf',[0.2 0.4 0.6]
+MF4='Off':'trimf',[0.4 0.6 0.8]
+MF5='Low_Right':'trimf',[0.6 0.8 1]
+MF6='LargeRight':'trimf',[0.8 1 1.2]
+
+[Rules]
+5 3, 1 (1) : 1
+5 1, 2 (1) : 1
+4 3, 1 (1) : 1
+4 1, 4 (1) : 1
+1 1, 6 (1) : 1
+1 3, 5 (1) : 1
+2 1, 1 (1) : 1
+2 3, 4 (1) : 1
+5 2, 1 (1) : 1
+4 2, 2 (1) : 1
+1 2, 6 (1) : 1
+2 2, 5 (1) : 1
+3 3, 2 (1) : 1
+3 1, 5 (1) : 1
+3 2, 4 (1) : 1
